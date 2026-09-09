@@ -10,6 +10,13 @@ An interactive asynchronous Telegram bot built with **Python 3** and the **pytho
 
 ---
 
+## 🚀 Try The Bot
+
+Chat with MiMi live on Telegram:  
+👉 **[Open @MiMispark_bot](https://t.me/MiMispark_bot)**
+
+---
+
 ## 📌 Key Features
 
 - **Asynchronous Architecture:** Built using modern `async/await` patterns with `ApplicationBuilder` for high responsiveness.
