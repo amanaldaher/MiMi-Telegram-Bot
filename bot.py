@@ -1,27 +1,26 @@
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, ContextTypes, CallbackQueryHandler
-
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
 
 TOKEN = os.getenv("TOKEN")
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [
-    [
-        InlineKeyboardButton("🌿 About Me", callback_data="about")
-    ],
-    [
-        InlineKeyboardButton("💻 My Skills", callback_data="skills"),
-        InlineKeyboardButton("🚀 My Projects", callback_data="projects")
-    ],
-    [
-        InlineKeyboardButton("🔗 My Links", callback_data="links"),
-        InlineKeyboardButton("📩 Contact Me", callback_data="contact")
+        [
+            InlineKeyboardButton("🌿 About Me", callback_data="about")
+        ],
+        [
+            InlineKeyboardButton("💻 My Skills", callback_data="skills"),
+            InlineKeyboardButton("🚀 My Projects", callback_data="projects")
+        ],
+        [
+            InlineKeyboardButton("🔗 My Links", callback_data="links"),
+            InlineKeyboardButton("📩 Contact Me", callback_data="contact")
+        ]
     ]
-]
 
     reply_markup = InlineKeyboardMarkup(keyboard)
 
@@ -38,20 +37,28 @@ async def button_click(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if query.data == "skills":
         await query.message.reply_text(
             "💻 My Skills\n\n"
-            "🌐 HTML & CSS\n"
+            "🌐 HTML5 & CSS3\n"
+            "⚡ Vanilla JavaScript (ES6+)\n"
             "💜 C# — OOP & Programming\n"
-            "🎨 UI/UX Design\n"
-            "🔧 Git & GitHub\n"
-            "🤖 Artificial Intelligence — Learning"
+            "🎨 UI/UX Design & Glassmorphism\n"
+            "🔗 REST APIs Integration\n"
+            "🔧 Git & GitHub Version Control\n"
+            "🤖 Python & Telegram Bots"
         )
 
     elif query.data == "projects":
         await query.message.reply_text(
             "🚀 My Projects\n\n"
-            "🌐 Personal Portfolio\n"
-            "💜 C# University Project\n"
-            "🎨 UI/UX Design Project\n"
-            "🤖 MiMi Telegram Bot"
+            "🌟 Personal Portfolio — Modern responsive portfolio website\n"
+            "🌙 Azan App — Real-time prayer times & Hijri converter\n"
+            "🌿 Weather & Astronomy — Live forecast with NASA moon phases\n"
+            "🌿 Task Tracker — Minimalist productivity app with subtasks\n"
+            "🎴 Memory Card Game — Interactive 3D flip card game\n"
+            "👁️ The Stalking Eyes — Trigonometric cursor-tracking eyes\n"
+            "🧠 Tiny Quiz App — Interactive web assessment & scoring\n"
+            "💚 HerzHilfe — Modern responsive non-profit landing page\n"
+            "🤖 MiMi Telegram Bot — Interactive portfolio bot\n"
+            "💜 C# University Coursework Projects"
         )
 
     elif query.data == "about":
@@ -59,21 +66,28 @@ async def button_click(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "🌿 About Me\n\n"
             "Hi! I'm Aman 🤍\n"
             "🎓 IT Engineering Student\n"
-            "💻 Interested in Web Development\n"
-            "🎨 UI/UX Design\n"
-            "🤖 Artificial Intelligence"
+            "💻 Passionate Front-End Developer\n"
+            "🎨 UI/UX Enthusiast\n"
+            "🤖 Exploring AI & Automation"
         )
 
     elif query.data == "contact":
         await query.message.reply_text(
             "📩 Contact Me\n\n"
-            "📧 Email: aman.aldaher.4@email.com\n"
+            "📧 Email: aman.aldaher.4@gmail.com\n"
             "📱 Telegram: @Alaman_com\n\n"
             "✨ Feel free to contact me!"
-          )
+        )
+
     elif query.data == "links":
         keyboard = [
-              [
+            [
+                InlineKeyboardButton(
+                    "🌐 Portfolio Website",
+                    url="https://amanaldaher.github.io/Personal_Portfolio/"
+                )
+            ],
+            [
                 InlineKeyboardButton(
                     "📸 Instagram",
                     url="https://www.instagram.com/aman_aldaher/"
@@ -88,7 +102,7 @@ async def button_click(update: Update, context: ContextTypes.DEFAULT_TYPE):
             [
                 InlineKeyboardButton(
                     "💼 LinkedIn",
-                    url="https://www.linkedin.com/in/aman_aldaher/"
+                    url="https://www.linkedin.com/in/aman-aldaher"
                 )
             ],
             [
@@ -106,7 +120,7 @@ async def button_click(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "Find me here 👇✨",
             reply_markup=reply_markup
         )
-   
+
 app = Application.builder().token(TOKEN).build()
 
 app.add_handler(CommandHandler("start", start))
